@@ -8,21 +8,25 @@
 namespace Spryker\Zed\Offer\Communication\Plugin;
 
 use Generated\Shared\Transfer\QuoteTransfer;
-use Orm\Zed\Sales\Persistence\SpySalesOrder;
-use Spryker\Zed\SalesExtension\Dependency\Plugin\PreSaveOrderHydratePluginInterface;
+use Generated\Shared\Transfer\SpySalesOrderEntityTransfer;
+use Spryker\Zed\SalesExtension\Dependency\Plugin\PreSaveOrderPluginInterface;
 
-class IsOfferPreSaveHydrateOrderPlugin implements PreSaveOrderHydratePluginInterface
+class IsOfferPreSaveHydrateOrderPlugin implements PreSaveOrderPluginInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
+     * {@inheritdoc}
+     * //TODO: check if it is needed.
+     * @api
      *
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrder
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\SpySalesOrderEntityTransfer $salesOrderEntityTransfer
+     *
+     * @return \Generated\Shared\Transfer\SpySalesOrderEntityTransfer
      */
-    public function hydrate(QuoteTransfer $quoteTransfer, SpySalesOrder $salesOrderEntity): SpySalesOrder
+    public function execute(QuoteTransfer $quoteTransfer, SpySalesOrderEntityTransfer $salesOrderEntityTransfer): SpySalesOrderEntityTransfer
     {
-        $salesOrderEntity->setIsOffer($quoteTransfer->getIsOffer());
+        $salesOrderEntityTransfer->setIsOffer($quoteTransfer->getIsOffer());
 
-        return $salesOrderEntity;
+        return $salesOrderEntityTransfer;
     }
 }
