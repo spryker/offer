@@ -5,16 +5,22 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Offer\Business\Model;
+namespace Spryker\Zed\Offer\Persistence;
+
 
 use Generated\Shared\Transfer\OfferTransfer;
 
-interface OfferPluginExecutorInterface
+interface OfferEntityManagerInterface
 {
     /**
+     * Specification:
+     *  - Change status of offer.
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\OfferTransfer $offerTransfer
      *
      * @return \Generated\Shared\Transfer\OfferTransfer
      */
-    public function hydrateOffer(OfferTransfer $offerTransfer): OfferTransfer;
+    public function saveOffer(OfferTransfer $offerTransfer): OfferTransfer;
 }
