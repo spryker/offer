@@ -4,6 +4,9 @@
 
 Module provides an ability to convert offer to order and retrieve offers from the database.
 
+**DEPRECATED - This module is not continued at this point.**
+Please use [spryker/offer](https://github.com/spryker/offer) instead.
+
 ## Installation
 
 ```
